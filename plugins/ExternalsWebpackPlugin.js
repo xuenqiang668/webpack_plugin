@@ -49,7 +49,7 @@ class ExternalsWebpackPlugin {
 
         compiler.hooks.compilation.tap(pluginName, compilation => {
             HtmlWebpackPlugin.getHooks(compilation).alterAssetTags.tap(pluginName, data => {
-                // console.log(data.assetTags.scripts);
+                console.log('HtmlWebpackPlugin', data.assetTags.scripts);
                 // {
                 //     tagName: 'script',
                 //     voidTag: false,

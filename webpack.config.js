@@ -2,11 +2,14 @@ const path = require('path')
 const CompressAssetsPlugin = require('./plugins/CompressAssetsPlugin');
 const ExternalsWebpackPlugin = require('./plugins/ExternalsWebpackPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const EntryAddPlugin = require('./plugins/EntryAddPlugin')
 
 
 module.exports = {
     mode: "development",
-    entry: path.resolve(__dirname, './src/index.js'),
+    entry: {
+        main: path.resolve(__dirname, './src/index.js'),
+    },
     devtool: false,
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -38,6 +41,9 @@ module.exports = {
                 src: 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js',
                 variableName: 'vue',
             },
+        }),
+        new EntryAddPlugin({
+            second: path.resolve(__dirname, './src/second.js')
         })
     ]
 }
